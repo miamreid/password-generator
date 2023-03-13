@@ -1,9 +1,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-const passwordEl = document.getElementById("password");
+var passwordText = document.querySelector("#password");
 
-const passwordFunc = {
+var passwordFunc = {
   symbols: specialCharacters,
   numbers: numericCharacters,
   lower: lowercaseCharacters,
@@ -30,27 +30,27 @@ generateBtn.addEventListener("click", function() {
   var upperPrompt = confirm("Click OK to confirm including uppercase characters.");
   console.log("Uppercase characters: " + upperPrompt);
 
-  passwordEl.innerText = generatePassword(symbolsPrompt, numbersPrompt, lowerPrompt, upperPrompt, passwordLength);
+  passwordText.innerText = generatePassword(symbolsPrompt, numbersPrompt, lowerPrompt, upperPrompt, passwordLength);
 });
 
 function generatePassword(symbols, numbers, lower, upper, passwordLength) {
 
-  let generatedPassword = '';
+  var generatedPassword = '';
 
-  const typesCount = lower + upper + numbers + symbols;
-  console.log('typesCount: ', typesCount);
+  var funcTypes = lower + upper + numbers + symbols;
+  console.log('funcTypes: ', funcTypes);
 
-  const typesArr = [{lower}, {upper}, {numbers}, {symbols}].filter
+  var arrTypes = [{lower}, {upper}, {numbers}, {symbols}].filter
   (item => Object.values(item)[0]);
-  console.log('typesArr: ', typesArr);
+  console.log('arrTypes: ', arrTypes);
 
-  if (typesArr === false) {
+  if (arrTypes === false) {
     return;
   }
 
-  for(let i = 0; i <= passwordLength; i += typesCount) {
-    typesArr.forEach(type => {
-      const funcName = Object.keys(type)[0];
+  for(let i = 0; i <= passwordLength; i += funcTypes) {
+    arrTypes.forEach(type => {
+      var funcName = Object.keys(type)[0];
 
       generatedPassword += passwordFunc [funcName]();
       });
@@ -68,7 +68,7 @@ function specialCharacters() {
 }
 
 function numericCharacters() {
-  return String.fromCharCode(Math.floor(Math.rndom() * 10) + 48);
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 }
 
 function lowercaseCharacters() {
@@ -78,66 +78,3 @@ function lowercaseCharacters() {
 function uppercaseCharacters() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 }
-
-/*
-generateBtn.addEventListener("click", function () {
-  
-  let generatedPassword = '';
-
-
-  //Window prompts begin
-  var passwordLength = Number(window.prompt("How many characters would you like your password to contain?"));
-    //Checks that password length is greater than 8 characters but less than 128
-    if (passwordLength < 8 || passwordLength > 128) {
-      return;
-    }
-  console.log("Password length: " + passwordLength);
-
-  specialCharacters = confirm("Click OK to confirm including special characters.");
-  console.log("Special characters: " + specialCharacters);
-
-numericCharacters = confirm("Click OK to confirm including numeric characters.");
-  console.log("Numeric characters: " + numericCharacters);
-
-lowercaseCharacters = confirm("Click OK to confirm including lowercase characters.");
-  console.log("Lowercase characters: " + lowercaseCharacters);
-
-uppercaseCharacters = confirm("Click OK to confirm including uppercase characters.");
-  console.log("Uppercase characters: " + uppercaseCharacters);
-  //End of window prompts
-
-  const typesCount = lower + upper + numbers + symbols;
-  console.log('typesCount: ', typesCount);
-
-  const typesArr = [{lower}, {upper}, {numbers}, {symbols}].filter
-  (item => Object.values(item)[0]);
-  console.log('typesArr: ', typesArr);
-
-  if (typesArr === false) {
-    return;
-  }
-
-  for(let i = 0; i <= passwordLength; i += typesCount) {
-    typesArr.forEach(type => {
-      const funcName = Object.keys(type)[0];
-      generatedPassword += passwordFunc [funcName]();
-      });
-  }
-  console.log(generatedPassword);
-}
-)
-
-
-/*
-    // Write password to the #password input
-
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-} 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
- */
