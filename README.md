@@ -12,8 +12,8 @@ I learned most about using an array to count the types of functions used in orde
 
 ## Usage
 
-![initial page prompt when user clicks "Generate" button](//password-generator/Screen%20Shot%202023-03-13%20at%205.50.15%20PM.png)
-![generated password text](//password-generator/Screen%20Shot%202023-03-13%20at%205.50.30%20PM.png)
+![initial page prompt when user clicks "Generate" button](.//Screen%20Shot%202023-03-13%20at%205.50.15%20PM.png)<br/>
+![generated password text](.//Screen%20Shot%202023-03-13%20at%205.50.30%20PM.png)
 
 Users that visit this website are able to click the generate button, which then starts a series of prompts to enter the password length, and whether the password should include numbers, special characters, lowercase letters, and/or uppercase letters.
 
